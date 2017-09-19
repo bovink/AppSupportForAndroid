@@ -3,12 +3,15 @@ package com.bovink.appsupport.utils;
 import android.content.Context;
 
 /**
- * dp、sp 转换为 px 的工具类
+ * 密度工具类
+ * <p>
+ * dp、sp、px之间的相互转换
  *
  * @author bovink
  * @since 2016/6/15
  */
 public class DensityUtils {
+
     private DensityUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

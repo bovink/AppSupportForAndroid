@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +21,7 @@ import com.bovink.appsupport.R;
  * @author bovink
  * @since 2016/5/3
  */
-public class GradientDrawableTextView extends TextView implements View.OnTouchListener {
+public class GradientDrawableTextView extends AppCompatTextView implements View.OnTouchListener {
     /**
      * 默认触摸亮度
      */
@@ -33,6 +34,14 @@ public class GradientDrawableTextView extends TextView implements View.OnTouchLi
      * getBackground为null时，gradient可以作为有效背景
      */
     private GradientDrawable gradient = new GradientDrawable();
+    /**
+     * 是否能点击
+     */
+    private boolean clickable = true;
+    /**
+     * 允许控件自动变色
+     */
+    private boolean enableAutoFaded = true;
 
 
     /**
@@ -243,8 +252,44 @@ public class GradientDrawableTextView extends TextView implements View.OnTouchLi
         return touchLum;
     }
 
+    public void setDrawableClickable(boolean clickable) {
+        this.clickable = clickable;
+
+        if (!enableAutoFaded) {
+           return;
+        }
+
+        if (clickable) {
+            setGradientColorFilter(50);
+            setTextColor(0xFFFFFFFF);
+        } else {
+            setGradientColorFilter(40);
+            setTextColor(0xFF999999);
+        }
+    }
+
+    public void setEnableAutoFaded(boolean enableAutoFaded) {
+        this.enableAutoFaded = enableAutoFaded;
+    }
+
+    private void setGradientColorFilter(int touchLum) {
+
+        // 获取触摸时变化的亮度，其他值为公式
+        float lum = (touchLum - 50) * 2 * 255 * 0.01f;
+
+        gradient.setColorFilter(new ColorMatrixColorFilter(new float[]{
+                1, 0, 0, 0, lum,
+                0, 1, 0, 0, lum,
+                0, 0, 1, 0, lum,
+                0, 0, 0, 1, 0
+        }));
+    }
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        if (!clickable) {
+            return true;
+        }
         // 如果父布局不为空且可点击，则执行触摸事件
         if (getParent() != null) {
             View parent = (View) getParent();
@@ -252,28 +297,16 @@ public class GradientDrawableTextView extends TextView implements View.OnTouchLi
                 parent.onTouchEvent(event);
             }
         }
-        // 获取触摸时变化的亮度，其他值为公式
-        float lum = (getTouchLum() - 50) * 2 * 255 * 0.01f;
         // 响应触摸事件
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
-                gradient.setColorFilter(new ColorMatrixColorFilter(new float[]{
-                        1, 0, 0, 0, lum,
-                        0, 1, 0, 0, lum,
-                        0, 0, 1, 0, lum,
-                        0, 0, 0, 1, 0
-                }));
+                setGradientColorFilter(getTouchLum());
                 break;
             case MotionEvent.ACTION_UP:
-                gradient.setColorFilter(new ColorMatrixColorFilter(new float[]{
-                        1, 0, 0, 0, 0,
-                        0, 1, 0, 0, 0,
-                        0, 0, 1, 0, 0,
-                        0, 0, 0, 1, 0
-                }));
+                setGradientColorFilter(50);
                 break;
         }
-        return true;
+        return false;
     }
 
 }

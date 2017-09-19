@@ -1,5 +1,6 @@
 package com.bovink.appsupport.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
@@ -11,6 +12,7 @@ import android.view.WindowManager;
  * @since 2016/6/16
  */
 public class ScreenUtils {
+
     private ScreenUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
@@ -40,5 +42,19 @@ public class ScreenUtils {
             e.printStackTrace();
         }
         return statusHeight;
+    }
+
+    public static void hideStatusBar(Activity activity, boolean hide) {
+        if (hide) {
+            //隐藏状态栏
+            WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
+            lp.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+            activity.getWindow().setAttributes(lp);
+        } else {
+            //显示状态栏
+            WindowManager.LayoutParams attr = activity.getWindow().getAttributes();
+            attr.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            activity.getWindow().setAttributes(attr);
+        }
     }
 }
