@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.3"
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -24,6 +24,8 @@ android {
 //开发必备的依赖库
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    // Android Support
+    compile 'com.android.support:appcompat-v7:25.3.1'
 
     // OkHttp and Retrofit2
     compile 'com.squareup.okhttp3:logging-interceptor:3.7.0'
