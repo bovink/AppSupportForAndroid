@@ -99,6 +99,7 @@ public class GradientDrawableTextView extends AppCompatTextView implements View.
         final int radius = a.getDimensionPixelSize(
                 R.styleable.GradientDrawableTextView_gdtv_cornerRadius, 0);
         gradient.setCornerRadius(radius);
+        gradient.setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
 
         // 获取分别设置的半径
         final int topLeftRadius = a.getDimensionPixelSize(
@@ -180,6 +181,10 @@ public class GradientDrawableTextView extends AppCompatTextView implements View.
      */
     public void setGradientSolidColor(String solidColor) {
         gradient.setColor(Color.parseColor(solidColor));
+    }
+
+    public void setGradientSolidColors(int[] colors) {
+        gradient.setColors(colors);
     }
 
     /**
