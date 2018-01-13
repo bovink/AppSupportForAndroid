@@ -37,10 +37,6 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * 是否能点击
      */
     private boolean clickable = false;
-    /**
-     * 允许控件自动变色
-     */
-    private boolean enableAutoFaded = true;
 
 
     /**
@@ -254,26 +250,6 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      */
     public int getTouchLum() {
         return touchLum;
-    }
-
-    public void setDrawableClickable(boolean clickable) {
-        this.clickable = clickable;
-
-        if (!enableAutoFaded) {
-           return;
-        }
-
-        if (clickable) {
-            setGradientColorFilter(50);
-            setTextColor(0xFFFFFFFF);
-        } else {
-            setGradientColorFilter(40);
-            setTextColor(0xFF999999);
-        }
-    }
-
-    public void setEnableAutoFaded(boolean enableAutoFaded) {
-        this.enableAutoFaded = enableAutoFaded;
     }
 
     private void setGradientColorFilter(int touchLum) {
