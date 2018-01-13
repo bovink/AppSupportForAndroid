@@ -36,7 +36,7 @@ public class GradientDrawableTextView extends AppCompatTextView implements View.
     /**
      * 是否能点击
      */
-    private boolean clickable = true;
+    private boolean clickable = false;
     /**
      * 允许控件自动变色
      */
@@ -313,4 +313,9 @@ public class GradientDrawableTextView extends AppCompatTextView implements View.
         return false;
     }
 
+    @Override
+    public void setClickable(boolean clickable) {
+        super.setClickable(clickable);
+        this.clickable = clickable;
+    }
 }
