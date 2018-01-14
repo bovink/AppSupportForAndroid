@@ -170,13 +170,18 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
     /**
      * 设置Gradient的填充颜色
      *
-     * @param solidColor 填充颜色
+     * @param color 填充颜色
      */
-    public void setGradientSolidColor(String solidColor) {
-        mBackgroundDrawable.setColor(Color.parseColor(solidColor));
+    public void setGradientColor(int color) {
+        mBackgroundDrawable.setColor(color);
     }
 
-    public void setGradientSolidColors(int[] colors) {
+    /**
+     * 设置Gradient的填充颜色
+     *
+     * @param colors 填充颜色
+     */
+    public void setGradientColors(int[] colors) {
         mBackgroundDrawable.setColors(colors);
     }
 
@@ -186,21 +191,21 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * @param strokeWidth 描边宽度
      * @param strokeColor 描边颜色
      */
-    public void setGradientStroke(int strokeWidth, String strokeColor) {
-        mBackgroundDrawable.setStroke(strokeWidth, Color.parseColor(strokeColor));
+    public void setGradientStroke(int strokeWidth, int strokeColor) {
+        mBackgroundDrawable.setStroke(strokeWidth, strokeColor);
     }
 
     /**
      * 设置Gradient的描边
      *
-     * @param strokeWidth     描边宽度
-     * @param strokeColor     描边颜色
-     * @param strokeDashWidth 虚线宽度
-     * @param strokeDashGap   虚线间隙
+     * @param strokeWidth 描边宽度
+     * @param strokeColor 描边颜色
+     * @param dashWidth   虚线宽度
+     * @param dashGap     虚线间隙
      */
-    public void setGradientStroke(int strokeWidth, String strokeColor,
-                                  float strokeDashWidth, float strokeDashGap) {
-        mBackgroundDrawable.setStroke(strokeWidth, Color.parseColor(strokeColor), strokeDashWidth, strokeDashGap);
+    public void setGradientStroke(int strokeWidth, int strokeColor,
+                                  float dashWidth, float dashGap) {
+        mBackgroundDrawable.setStroke(strokeWidth, strokeColor, dashWidth, dashGap);
     }
 
     /**
@@ -215,7 +220,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
     /**
      * 设置Gradient四角的半径
      *
-     * @param radii 半径数组
+     * @param radii 半径
      */
     public void setGradientCornerRadii(float[] radii) {
         mBackgroundDrawable.setCornerRadii(radii);
