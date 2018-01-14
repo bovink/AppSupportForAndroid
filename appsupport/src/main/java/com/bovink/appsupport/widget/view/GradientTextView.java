@@ -20,6 +20,7 @@ import com.bovink.appsupport.R;
  * @author bovink
  * @since 2016/5/3
  */
+
 public class GradientTextView extends AppCompatTextView implements View.OnTouchListener {
     /**
      * 默认触摸亮度
