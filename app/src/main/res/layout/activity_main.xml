@@ -11,9 +11,4 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.bovink.appsupportforandroid.MainActivity">
 
-    <com.bovink.appsupport.widget.view.GradientDrawableTextView
-        android:id="@+id/tv_test"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        gradient:gdtv_solidColor="#66CCFF" />
 </RelativeLayout>

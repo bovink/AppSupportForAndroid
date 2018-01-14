@@ -14,29 +14,4 @@
         <attr name="solid_color" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="GradientDrawableTextView">
-        <attr name="gdtv_cornerTopLeftRadius" format="dimension" />
-        <attr name="gdtv_cornerTopRightRadius" format="dimension" />
-        <attr name="gdtv_cornerBottomLeftRadius" format="dimension" />
-        <attr name="gdtv_cornerBottomRightRadius" format="dimension" />
-        <attr name="gdtv_cornerRadius" format="dimension" />
-        <attr name="gdtv_strokeWidth" format="dimension" />
-        <attr name="gdtv_strokeColor" format="color" />
-        <attr name="gdtv_strokeDashWidth" format="dimension" />
-        <attr name="gdtv_strokeDashGap" format="dimension" />
-        <attr name="gdtv_solidColor" format="color" />
-    </declare-styleable>
-
-    <declare-styleable name="GradientLayout">
-        <attr name="gl_cornerTopLeftRadius" format="dimension" />
-        <attr name="gl_cornerTopRightRadius" format="dimension" />
-        <attr name="gl_cornerBottomLeftRadius" format="dimension" />
-        <attr name="gl_cornerBottomRightRadius" format="dimension" />
-        <attr name="gl_cornerRadius" format="dimension" />
-        <attr name="gl_strokeWidth" format="dimension" />
-        <attr name="gl_strokeColor" format="color" />
-        <attr name="gl_strokeDashWidth" format="dimension" />
-        <attr name="gl_strokeDashGap" format="dimension" />
-        <attr name="gl_solidColor" format="color" />
-    </declare-styleable>
 </resources>
