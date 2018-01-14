@@ -28,15 +28,15 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
     /**
      * 触摸时变化的亮度
      */
-    private int touchLum = DEFAULT_LUM;
+    private int mTouchLum = DEFAULT_LUM;
     /**
      * getBackground为null时，gradient可以作为有效背景
      */
-    private GradientDrawable gradient = new GradientDrawable();
+    private GradientDrawable mBackgroundDrawable = new GradientDrawable();
     /**
      * 是否能点击
      */
-    private boolean clickable = false;
+    private boolean mClickable = false;
 
 
     /**
@@ -94,8 +94,8 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
         // 获取一次性设置的半径
         final int radius = a.getDimensionPixelSize(
                 R.styleable.GradientDrawableTextView_gdtv_cornerRadius, 0);
-        gradient.setCornerRadius(radius);
-        gradient.setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
+        mBackgroundDrawable.setCornerRadius(radius);
+        mBackgroundDrawable.setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
 
         // 获取分别设置的半径
         final int topLeftRadius = a.getDimensionPixelSize(
@@ -110,7 +110,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
         // 当分别设置的半径与一次性设置的半径不同时，重新设置四角半径
         if (topLeftRadius != radius || topRightRadius != radius ||
                 bottomLeftRadius != radius || bottomRightRadius != radius) {
-            gradient.setCornerRadii(new float[]{
+            mBackgroundDrawable.setCornerRadii(new float[]{
                     topLeftRadius, topLeftRadius,
                     topRightRadius, topRightRadius,
                     bottomRightRadius, bottomRightRadius,
@@ -139,9 +139,9 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
             // 虚线间隙
             final float dashGap = a.getDimension(
                     R.styleable.GradientDrawableTextView_gdtv_strokeDashGap, 0.0f);
-            gradient.setStroke(strokeWidth, strokeColor, dashWidth, dashGap);
+            mBackgroundDrawable.setStroke(strokeWidth, strokeColor, dashWidth, dashGap);
         } else {
-            gradient.setStroke(strokeWidth, strokeColor);
+            mBackgroundDrawable.setStroke(strokeWidth, strokeColor);
         }
     }
 
@@ -154,7 +154,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
         // 填充颜色
         final int solidColor = a.getColor(
                 R.styleable.GradientDrawableTextView_gdtv_solidColor, Color.TRANSPARENT);
-        gradient.setColor(solidColor);
+        mBackgroundDrawable.setColor(solidColor);
     }
 
     /**
@@ -162,9 +162,9 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      */
     private void updateGradient() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            setBackground(gradient);
+            setBackground(mBackgroundDrawable);
         } else {
-            setBackgroundDrawable(gradient);
+            setBackgroundDrawable(mBackgroundDrawable);
         }
     }
 
@@ -174,11 +174,11 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * @param solidColor 填充颜色
      */
     public void setGradientSolidColor(String solidColor) {
-        gradient.setColor(Color.parseColor(solidColor));
+        mBackgroundDrawable.setColor(Color.parseColor(solidColor));
     }
 
     public void setGradientSolidColors(int[] colors) {
-        gradient.setColors(colors);
+        mBackgroundDrawable.setColors(colors);
     }
 
     /**
@@ -188,7 +188,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * @param strokeColor 描边颜色
      */
     public void setGradientStroke(int strokeWidth, String strokeColor) {
-        gradient.setStroke(strokeWidth, Color.parseColor(strokeColor));
+        mBackgroundDrawable.setStroke(strokeWidth, Color.parseColor(strokeColor));
     }
 
     /**
@@ -201,7 +201,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      */
     public void setGradientStroke(int strokeWidth, String strokeColor,
                                   float strokeDashWidth, float strokeDashGap) {
-        gradient.setStroke(strokeWidth, Color.parseColor(strokeColor), strokeDashWidth, strokeDashGap);
+        mBackgroundDrawable.setStroke(strokeWidth, Color.parseColor(strokeColor), strokeDashWidth, strokeDashGap);
     }
 
     /**
@@ -210,7 +210,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * @param radius 半径
      */
     public void setGradientCornerRadius(float radius) {
-        gradient.setCornerRadius(radius);
+        mBackgroundDrawable.setCornerRadius(radius);
     }
 
     /**
@@ -219,7 +219,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * @param radii 半径数组
      */
     public void setGradientCornerRadii(float[] radii) {
-        gradient.setCornerRadii(radii);
+        mBackgroundDrawable.setCornerRadii(radii);
     }
 
     /**
@@ -228,7 +228,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * @param lum 亮度
      */
     public void setTouchLum(int lum) {
-        touchLum = lum;
+        mTouchLum = lum;
         if (lum < 0 || lum > 100) {
             throw new IllegalArgumentException("lum can not be < 0 or > 100");
         }
@@ -240,7 +240,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * @return 亮度
      */
     public int getTouchLum() {
-        return touchLum;
+        return mTouchLum;
     }
 
     private void setGradientColorFilter(int touchLum) {
@@ -248,7 +248,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
         // 获取触摸时变化的亮度，其他值为公式
         float lum = (touchLum - 50) * 2 * 255 * 0.01f;
 
-        gradient.setColorFilter(new ColorMatrixColorFilter(new float[]{
+        mBackgroundDrawable.setColorFilter(new ColorMatrixColorFilter(new float[]{
                 1, 0, 0, 0, lum,
                 0, 1, 0, 0, lum,
                 0, 0, 1, 0, lum,
@@ -258,7 +258,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        if (!clickable) {
+        if (!mClickable) {
             return true;
         }
         // 如果父布局不为空且可点击，则执行触摸事件
@@ -283,6 +283,6 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
     @Override
     public void setClickable(boolean clickable) {
         super.setClickable(clickable);
-        this.clickable = clickable;
+        mClickable = clickable;
     }
 }
