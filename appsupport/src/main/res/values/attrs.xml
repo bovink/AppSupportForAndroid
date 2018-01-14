@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="GradientDrawableView">
+        <attr name="corners_topLeftRadius" format="dimension" />
+        <attr name="corners_topRightRadius" format="dimension" />
+        <attr name="corners_bottomLeftRadius" format="dimension" />
+        <attr name="corners_bottomRightRadius" format="dimension" />
+        <attr name="corners_radius" format="dimension" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="stroke_color" format="color" />
+        <attr name="stroke_dashWidth" format="dimension" />
+        <attr name="stroke_dashGap" format="dimension" />
+        <attr name="solid_color" format="color" />
+    </declare-styleable>
+
     <declare-styleable name="GradientDrawableTextView">
         <attr name="gdtv_cornerTopLeftRadius" format="dimension" />
         <attr name="gdtv_cornerTopRightRadius" format="dimension" />
