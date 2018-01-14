@@ -72,31 +72,33 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
 
         setOnTouchListener(this);
 
-        updateGradientCorners(a);
+        updateBackgroundCornerRadius(a);
 
-        updateGradientStroke(a);
+        updateBackgroundStroke(a);
 
-        updateGradientSolid(a);
+        updateBackgroundColor(a);
 
-        updateGradient();
+        updateBackground();
 
         a.recycle();
 
     }
 
     /**
-     * 更新Gradient四角的半径
+     * 更新背景四角的半径
      *
      * @param a 属性集合
      */
-    private void updateGradientCorners(TypedArray a) {
-        // 获取一次性设置的半径
+    private void updateBackgroundCornerRadius(TypedArray a) {
+
+        mBackgroundDrawable.setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
+
+        // 获取半径
         final int radius = a.getDimensionPixelSize(
                 R.styleable.GradientDrawableTextView_gdtv_cornerRadius, 0);
         mBackgroundDrawable.setCornerRadius(radius);
-        mBackgroundDrawable.setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
 
-        // 获取分别设置的半径
+        // 获取四角的半径
         final int topLeftRadius = a.getDimensionPixelSize(
                 R.styleable.GradientDrawableTextView_gdtv_cornerTopLeftRadius, radius);
         final int topRightRadius = a.getDimensionPixelSize(
@@ -118,48 +120,50 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
     }
 
     /**
-     * 更新Gradient的描边
+     * 更新背景的描边
      *
      * @param a 属性集合
      */
-    private void updateGradientStroke(TypedArray a) {
+    private void updateBackgroundStroke(TypedArray a) {
+
         // 描边宽度
-        final int strokeWidth = a.getDimensionPixelSize(
+        final int width = a.getDimensionPixelSize(
                 R.styleable.GradientDrawableTextView_gdtv_strokeWidth, 0);
+
+        // 描边颜色
+        final int color = a.getColor(
+                R.styleable.GradientDrawableTextView_gdtv_strokeColor, Color.TRANSPARENT);
+
         // 虚线宽度
         final float dashWidth = a.getDimension(
                 R.styleable.GradientDrawableTextView_gdtv_strokeDashWidth, 0.0f);
-
-        // 描边颜色
-        final int strokeColor = a.getColor(
-                R.styleable.GradientDrawableTextView_gdtv_strokeColor, Color.TRANSPARENT);
 
         if (dashWidth != 0.0f) {
             // 虚线间隙
             final float dashGap = a.getDimension(
                     R.styleable.GradientDrawableTextView_gdtv_strokeDashGap, 0.0f);
-            mBackgroundDrawable.setStroke(strokeWidth, strokeColor, dashWidth, dashGap);
+            mBackgroundDrawable.setStroke(width, color, dashWidth, dashGap);
         } else {
-            mBackgroundDrawable.setStroke(strokeWidth, strokeColor);
+            mBackgroundDrawable.setStroke(width, color);
         }
     }
 
     /**
-     * 更新Gradient的填充颜色
+     * 更新背景的填充颜色
      *
      * @param a 属性集合
      */
-    private void updateGradientSolid(TypedArray a) {
+    private void updateBackgroundColor(TypedArray a) {
         // 填充颜色
-        final int solidColor = a.getColor(
+        final int color = a.getColor(
                 R.styleable.GradientDrawableTextView_gdtv_solidColor, Color.TRANSPARENT);
-        mBackgroundDrawable.setColor(solidColor);
+        mBackgroundDrawable.setColor(color);
     }
 
     /**
-     * 更新Gradient
+     * 更新背景
      */
-    private void updateGradient() {
+    private void updateBackground() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             setBackground(mBackgroundDrawable);
         } else {
