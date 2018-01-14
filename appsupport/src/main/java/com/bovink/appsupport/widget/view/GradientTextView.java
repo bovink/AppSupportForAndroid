@@ -161,12 +161,10 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * 更新Gradient
      */
     private void updateGradient() {
-        if (getBackground() == null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                setBackground(gradient);
-            } else {
-                setBackgroundDrawable(gradient);
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            setBackground(gradient);
+        } else {
+            setBackgroundDrawable(gradient);
         }
     }
 
@@ -222,13 +220,6 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      */
     public void setGradientCornerRadii(float[] radii) {
         gradient.setCornerRadii(radii);
-    }
-
-    /**
-     * 设置Gradient为背景
-     */
-    public void setGradient() {
-        updateGradient();
     }
 
     /**
