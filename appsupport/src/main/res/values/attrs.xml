@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="GradientDrawableView">
+    <declare-styleable name="GradientFrameLayout">
+        <attr name="corners_topLeftRadius" format="dimension" />
+        <attr name="corners_topRightRadius" format="dimension" />
+        <attr name="corners_bottomLeftRadius" format="dimension" />
+        <attr name="corners_bottomRightRadius" format="dimension" />
+        <attr name="corners_radius" format="dimension" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="stroke_color" format="color" />
+        <attr name="stroke_dashWidth" format="dimension" />
+        <attr name="stroke_dashGap" format="dimension" />
+        <attr name="solid_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="GradientLinearLayout">
+        <attr name="corners_topLeftRadius" format="dimension" />
+        <attr name="corners_topRightRadius" format="dimension" />
+        <attr name="corners_bottomLeftRadius" format="dimension" />
+        <attr name="corners_bottomRightRadius" format="dimension" />
+        <attr name="corners_radius" format="dimension" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="stroke_color" format="color" />
+        <attr name="stroke_dashWidth" format="dimension" />
+        <attr name="stroke_dashGap" format="dimension" />
+        <attr name="solid_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="GradientRelativeLayout">
+        <attr name="corners_topLeftRadius" format="dimension" />
+        <attr name="corners_topRightRadius" format="dimension" />
+        <attr name="corners_bottomLeftRadius" format="dimension" />
+        <attr name="corners_bottomRightRadius" format="dimension" />
+        <attr name="corners_radius" format="dimension" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="stroke_color" format="color" />
+        <attr name="stroke_dashWidth" format="dimension" />
+        <attr name="stroke_dashGap" format="dimension" />
+        <attr name="solid_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="GradientTextView">
+        <attr name="corners_topLeftRadius" format="dimension" />
+        <attr name="corners_topRightRadius" format="dimension" />
+        <attr name="corners_bottomLeftRadius" format="dimension" />
+        <attr name="corners_bottomRightRadius" format="dimension" />
+        <attr name="corners_radius" format="dimension" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="stroke_color" format="color" />
+        <attr name="stroke_dashWidth" format="dimension" />
+        <attr name="stroke_dashGap" format="dimension" />
+        <attr name="solid_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="GradientView">
         <attr name="corners_topLeftRadius" format="dimension" />
         <attr name="corners_topRightRadius" format="dimension" />
         <attr name="corners_bottomLeftRadius" format="dimension" />

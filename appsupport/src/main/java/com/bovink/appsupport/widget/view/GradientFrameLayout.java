@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 import com.bovink.appsupport.R;
 
 /**
- * com.bovink.appsupport.widget.view
+ * 使用GradientDrawable作为背景的FrameLayout
  *
  * @author bovink
  * @since 2018/1/14
@@ -53,7 +53,7 @@ public class GradientFrameLayout extends FrameLayout implements View.OnTouchList
         super(context, attrs, defStyleAttr);
 
         TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.GradientDrawableView, defStyleAttr, 0);
+                R.styleable.GradientFrameLayout, defStyleAttr, 0);
 
         setOnTouchListener(this);
 
@@ -80,18 +80,18 @@ public class GradientFrameLayout extends FrameLayout implements View.OnTouchList
 
         // 获取半径
         final int radius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_radius, 0);
+                R.styleable.GradientFrameLayout_corners_radius, 0);
         mBackgroundDrawable.setCornerRadius(radius);
 
         // 获取四角的半径
         final int topLeftRadius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_topLeftRadius, radius);
+                R.styleable.GradientFrameLayout_corners_topLeftRadius, radius);
         final int topRightRadius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_topRightRadius, radius);
+                R.styleable.GradientFrameLayout_corners_topRightRadius, radius);
         final int bottomLeftRadius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_bottomLeftRadius, radius);
+                R.styleable.GradientFrameLayout_corners_bottomLeftRadius, radius);
         final int bottomRightRadius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_bottomRightRadius, radius);
+                R.styleable.GradientFrameLayout_corners_bottomRightRadius, radius);
 
         // 当分别设置的半径与一次性设置的半径不同时，重新设置四角半径
         if (topLeftRadius != radius || topRightRadius != radius ||
@@ -113,20 +113,20 @@ public class GradientFrameLayout extends FrameLayout implements View.OnTouchList
 
         // 描边宽度
         final int width = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_stroke_width, 0);
+                R.styleable.GradientFrameLayout_stroke_width, 0);
 
         // 描边颜色
         final int color = a.getColor(
-                R.styleable.GradientDrawableView_stroke_color, Color.TRANSPARENT);
+                R.styleable.GradientFrameLayout_stroke_color, Color.TRANSPARENT);
 
         // 虚线宽度
         final float dashWidth = a.getDimension(
-                R.styleable.GradientDrawableView_stroke_dashWidth, 0.0f);
+                R.styleable.GradientFrameLayout_stroke_dashWidth, 0.0f);
 
         if (dashWidth != 0.0f) {
             // 虚线间隙
             final float dashGap = a.getDimension(
-                    R.styleable.GradientDrawableView_stroke_dashGap, 0.0f);
+                    R.styleable.GradientFrameLayout_stroke_dashGap, 0.0f);
             mBackgroundDrawable.setStroke(width, color, dashWidth, dashGap);
         } else {
             mBackgroundDrawable.setStroke(width, color);
@@ -141,7 +141,7 @@ public class GradientFrameLayout extends FrameLayout implements View.OnTouchList
     private void updateBackgroundColor(TypedArray a) {
         // 填充颜色
         final int color = a.getColor(
-                R.styleable.GradientDrawableView_solid_color, Color.TRANSPARENT);
+                R.styleable.GradientFrameLayout_solid_color, Color.TRANSPARENT);
         mBackgroundDrawable.setColor(color);
     }
 

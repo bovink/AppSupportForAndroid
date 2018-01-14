@@ -69,7 +69,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
         super(context, attrs, defStyleAttr);
 
         TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.GradientDrawableView, defStyleAttr, 0);
+                R.styleable.GradientTextView, defStyleAttr, 0);
 
         setOnTouchListener(this);
 
@@ -96,18 +96,18 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
 
         // 获取半径
         final int radius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_radius, 0);
+                R.styleable.GradientTextView_corners_radius, 0);
         mBackgroundDrawable.setCornerRadius(radius);
 
         // 获取四角的半径
         final int topLeftRadius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_topLeftRadius, radius);
+                R.styleable.GradientTextView_corners_topLeftRadius, radius);
         final int topRightRadius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_topRightRadius, radius);
+                R.styleable.GradientTextView_corners_topRightRadius, radius);
         final int bottomLeftRadius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_bottomLeftRadius, radius);
+                R.styleable.GradientTextView_corners_bottomLeftRadius, radius);
         final int bottomRightRadius = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_corners_bottomRightRadius, radius);
+                R.styleable.GradientTextView_corners_bottomRightRadius, radius);
 
         // 当分别设置的半径与一次性设置的半径不同时，重新设置四角半径
         if (topLeftRadius != radius || topRightRadius != radius ||
@@ -129,20 +129,20 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
 
         // 描边宽度
         final int width = a.getDimensionPixelSize(
-                R.styleable.GradientDrawableView_stroke_width, 0);
+                R.styleable.GradientTextView_stroke_width, 0);
 
         // 描边颜色
         final int color = a.getColor(
-                R.styleable.GradientDrawableView_stroke_color, Color.TRANSPARENT);
+                R.styleable.GradientTextView_stroke_color, Color.TRANSPARENT);
 
         // 虚线宽度
         final float dashWidth = a.getDimension(
-                R.styleable.GradientDrawableView_stroke_dashWidth, 0.0f);
+                R.styleable.GradientTextView_stroke_dashWidth, 0.0f);
 
         if (dashWidth != 0.0f) {
             // 虚线间隙
             final float dashGap = a.getDimension(
-                    R.styleable.GradientDrawableView_stroke_dashGap, 0.0f);
+                    R.styleable.GradientTextView_stroke_dashGap, 0.0f);
             mBackgroundDrawable.setStroke(width, color, dashWidth, dashGap);
         } else {
             mBackgroundDrawable.setStroke(width, color);
@@ -157,7 +157,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
     private void updateBackgroundColor(TypedArray a) {
         // 填充颜色
         final int color = a.getColor(
-                R.styleable.GradientDrawableView_solid_color, Color.TRANSPARENT);
+                R.styleable.GradientTextView_solid_color, Color.TRANSPARENT);
         mBackgroundDrawable.setColor(color);
     }
 
