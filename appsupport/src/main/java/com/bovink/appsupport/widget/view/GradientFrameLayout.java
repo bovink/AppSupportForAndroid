@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -149,11 +148,7 @@ public class GradientFrameLayout extends FrameLayout implements View.OnTouchList
      * 更新背景
      */
     private void updateBackground() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            setBackground(mBackgroundDrawable);
-        } else {
-            setBackgroundDrawable(mBackgroundDrawable);
-        }
+        setBackground(mBackgroundDrawable);
     }
 
     /**

@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -165,11 +164,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      * 更新背景
      */
     private void updateBackground() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            setBackground(mBackgroundDrawable);
-        } else {
-            setBackgroundDrawable(mBackgroundDrawable);
-        }
+        setBackground(mBackgroundDrawable);
     }
 
     /**
