@@ -15,7 +15,7 @@ import com.bovink.appsupport.R;
 
 
 /**
- * 一个自带GradientDrawable的TextView
+ * 使用GradientDrawable作为背景的TextView
  *
  * @author bovink
  * @since 2016/5/3
@@ -26,18 +26,17 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
      */
     private final static int DEFAULT_LUM = 45;
     /**
-     * 触摸时变化的亮度
+     * 触摸控件时，控件的亮度。默认使用DEFAULT_LUM。
      */
     private int mTouchLum = DEFAULT_LUM;
     /**
-     * getBackground为null时，gradient可以作为有效背景
+     * 默认使用GradientDrawable作为背景。
      */
     private GradientDrawable mBackgroundDrawable = new GradientDrawable();
     /**
-     * 是否能点击
+     * 控件是否可点击。默认不可点击。
      */
     private boolean mClickable = false;
-
 
     /**
      * 构造函数
@@ -223,19 +222,19 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
     }
 
     /**
-     * 设置触摸时的亮度
+     * 设置触摸亮度
      *
-     * @param lum 亮度
+     * @param touchLum 亮度
      */
-    public void setTouchLum(int lum) {
-        mTouchLum = lum;
-        if (lum < 0 || lum > 100) {
-            throw new IllegalArgumentException("lum can not be < 0 or > 100");
+    public void setTouchLum(int touchLum) {
+        mTouchLum = touchLum;
+        if (touchLum < 0 || touchLum > 100) {
+            throw new IllegalArgumentException("touchLum can not be less than ZERO or greater than ONE-HUNDRED");
         }
     }
 
     /**
-     * 获取触摸时的亮度
+     * 获取触摸亮度
      *
      * @return 亮度
      */
@@ -243,9 +242,13 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
         return mTouchLum;
     }
 
+    /**
+     * 根据触摸亮度设置颜色滤色片
+     *
+     * @param touchLum 亮度
+     */
     private void setGradientColorFilter(int touchLum) {
 
-        // 获取触摸时变化的亮度，其他值为公式
         float lum = (touchLum - 50) * 2 * 255 * 0.01f;
 
         mBackgroundDrawable.setColorFilter(new ColorMatrixColorFilter(new float[]{
@@ -261,7 +264,7 @@ public class GradientTextView extends AppCompatTextView implements View.OnTouchL
         if (!mClickable) {
             return true;
         }
-        // 如果父布局不为空且可点击，则执行触摸事件
+        // 如父布局不为空且可点击，则父布局执行触摸事件
         if (getParent() != null) {
             View parent = (View) getParent();
             if (parent.isClickable()) {
